@@ -1,6 +1,6 @@
 package com.panasetskaia.dogsapp.domain
 
-data class Dog(
+data class DogBreed(
     val id: Int,
     val name: String,
     val pictures: List<String>,
