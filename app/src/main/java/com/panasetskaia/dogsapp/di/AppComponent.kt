@@ -1,10 +1,10 @@
 package com.panasetskaia.dogsapp.di
 
 import android.app.Application
-import com.panasetskaia.dogsapp.presentation.AllDogsFragment
-import com.panasetskaia.dogsapp.presentation.DogDetailsFragment
-import com.panasetskaia.dogsapp.presentation.InitialFragment
+import com.panasetskaia.dogsapp.presentation.screen_all_dogs.AllDogsFragment
+import com.panasetskaia.dogsapp.presentation.screen_initial.InitialFragment
 import com.panasetskaia.dogsapp.presentation.MainActivity
+import com.panasetskaia.dogsapp.presentation.screen_details.DogDetailsFragment
 import dagger.BindsInstance
 import dagger.Component
 
