@@ -13,14 +13,13 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    private val component by lazy {
+    val component by lazy {
         (application as DogApplication).component
     }
 
     val viewModel by lazy {
         ViewModelProvider(this, viewModelFactory)[MainViewModel::class.java]
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         component.inject(this)

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/initialFragment">
+
+    <fragment
+        android:id="@+id/initialFragment"
+        android:name="com.panasetskaia.dogsapp.presentation.screen_initial.InitialFragment"
+        android:label="InitialFragment" >
+        <action
+            android:id="@+id/action_initialFragment_to_allDogsFragment"
+            app:destination="@id/allDogsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/allDogsFragment"
+        android:name="com.panasetskaia.dogsapp.presentation.screen_all_dogs.AllDogsFragment"
+        android:label="AllDogsFragment" >
+        <action
+            android:id="@+id/action_allDogsFragment_to_dogDetailsFragment"
+            app:destination="@id/dogDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dogDetailsFragment"
+        android:name="com.panasetskaia.dogsapp.presentation.screen_details.DogDetailsFragment"
+        android:label="DogDetailsFragment" >
+        <argument
+            android:name="breedName"
+            app:argType="string"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+</navigation>
