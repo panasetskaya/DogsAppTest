@@ -7,9 +7,9 @@ import com.google.gson.annotations.SerializedName
 data class DogApiAllDogsResponse(
     @SerializedName("message")
     @Expose
-    val message: JsonObject,
+    override val message: JsonObject,
 
     @SerializedName("status")
     @Expose
-    val status: String
-)
+    override val status: String
+): Response()

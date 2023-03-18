@@ -16,7 +16,6 @@ class DogDetailsFragment : BaseFragment<FragmentDogDetailsBinding, MainViewModel
     @Inject
     override lateinit var viewModel: MainViewModel
 
-    private val navArgs by navArgs<DogDetailsFragmentArgs>()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -24,10 +23,6 @@ class DogDetailsFragment : BaseFragment<FragmentDogDetailsBinding, MainViewModel
     }
 
     override fun onReady(savedInstanceState: Bundle?) {
-        if (navArgs.breedName != null){
-//            binding.textViewIdTitle.text = navArgs.breedName
-        }
-
         //todo
     }
 

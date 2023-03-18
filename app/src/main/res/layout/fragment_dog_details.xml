@@ -21,17 +21,17 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="@{viewModel.breedsNames}"
+            android:text="@{viewModel.breedNameFlow}"
             android:gravity="center"/>
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_dummy"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:onClick="@{v->viewModel.DUMMYgetSingleBreedSubBreeds()}"
-            android:text="Get hound subbreeds"/>
+<!--        <Button-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/tv_dummy"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            android:onClick="@{v->viewModel.DUMMYgetSingleBreedSubBreeds()}"-->
+<!--            android:text="Get hound subbreeds"/>-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

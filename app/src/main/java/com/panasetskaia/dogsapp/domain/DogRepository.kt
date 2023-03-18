@@ -6,8 +6,6 @@ interface DogRepository {
 
     suspend fun getSingleBreedSubBreeds(breed: String): List<String>?
 
-    suspend fun getSingleBreedPictures(breed: String): List<String>?
-
     suspend fun getSingleSubBreedPictures(breed: String, subBreed: String): List<String>?
 
 }
