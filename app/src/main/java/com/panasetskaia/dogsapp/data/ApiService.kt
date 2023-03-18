@@ -1,14 +1,40 @@
 package com.panasetskaia.dogsapp.data
 
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 interface ApiService {
 
-    //todo: прописать нормальный ApiService
-//    @GET("v3/654bd15e-b121-49ba-a588-960956b15175")
-//    suspend fun getStore(): StoreResponse
-//
-//    @GET("v3/6c14c560-15c6-4248-b9d2-b4508df7d4f5")
-//    suspend fun getSinglePhone(): PhoneDtoModel
+    @GET("breeds/list/all")
+    suspend fun getAllBreedsNames(
+    ): DogApiAllDogsResponse
+
+    @GET("breed/{breed_name}/images")
+    suspend fun getImagesByBreed(
+        @Path(
+            value = "breed_name",
+            encoded = true
+        ) breedName: String
+    ): DogApiByBreedResponse
+
+    @GET("breed/{breed_name}/list")
+    suspend fun getSubBreedsByBreed(
+        @Path(
+            value = "breed_name",
+            encoded = true
+        ) breedName: String
+    ): DogApiByBreedResponse
+
+    @GET("breed/{breed_name}/{sub_breed_name}/images")
+    suspend fun getImagesBySubBreed(
+        @Path(
+            value = "breed_name",
+            encoded = true
+        ) breedName: String,
+        @Path(
+            value = "sub_breed_name",
+            encoded = true
+        ) subBreedName: String,
+    ): DogApiByBreedResponse
 
 }
