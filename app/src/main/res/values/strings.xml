@@ -4,6 +4,8 @@
     <!-- Initial fragment -->
     <string name="initial_text">Hello!\nThis little app is dedicated to help you explore the amazing world of dogs,\nbig and small.</string>
     <string name="take_a_look">Take a look</string>
+    <string name="breed_pic_description">This a picture of a breed</string>
+    <string name="network_mistake">Sorry, there must be some mistake!</string>
 
     <!-- AllDogs fragment -->
 

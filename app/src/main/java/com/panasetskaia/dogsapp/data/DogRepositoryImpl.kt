@@ -1,5 +1,6 @@
 package com.panasetskaia.dogsapp.data
 
+import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
@@ -14,11 +15,17 @@ class DogRepositoryImpl @Inject constructor(
     private var currentBreedList: MutableList<DogBreed>? = null
 
     override suspend fun getAllBreedsWithPics(): List<DogBreed>? {
-        val response = apiService.getAllBreedsNames()
-        if (response.status == STATUS_SUCCESS) {
-            currentBreedList = mutableListOf()
-            val responseJson = response.message
-            parseJson(responseJson)
+        if (currentBreedList==null) {
+            try {
+                val response = apiService.getAllBreedsNames()
+                if (response.status == STATUS_SUCCESS) {
+                    currentBreedList = mutableListOf()
+                    val responseJson = response.message
+                    parseJson(responseJson)
+                }
+            } catch (e: Exception) {
+                Log.e("MY_TAG", "${e.message}")
+            }
         }
         return currentBreedList
     }

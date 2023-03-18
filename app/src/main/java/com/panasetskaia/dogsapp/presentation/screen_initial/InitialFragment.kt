@@ -24,6 +24,10 @@ class InitialFragment :
     }
 
     override fun onReady(savedInstanceState: Bundle?) {
-       //todo
+        binding.viewModel = viewModel
+        with(binding.dogAnimationView) {
+            repeatCount = 0
+            playAnimation()
+        }
     }
 }

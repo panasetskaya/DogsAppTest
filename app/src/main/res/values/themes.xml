@@ -2,9 +2,9 @@
 
     <style name="Theme.DogsApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/orange</item>
-        <item name="colorPrimaryVariant">@color/dark_green</item>
+        <item name="colorPrimaryVariant">@color/dark_blue</item>
         <item name="colorOnPrimary">@color/white</item>
-        <item name="colorSecondary">@color/light_green</item>
+        <item name="colorSecondary">@color/dark_blue</item>
         <item name="colorSecondaryVariant">@color/grey</item>
         <item name="colorOnSecondary">@color/black</item>
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
