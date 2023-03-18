@@ -1,6 +1,7 @@
 package com.panasetskaia.dogsapp.presentation
 
 import android.text.Editable
+import android.util.Log
 import androidx.databinding.InverseMethod
 import androidx.lifecycle.viewModelScope
 import com.panasetskaia.dogsapp.base.BaseViewModel
@@ -33,9 +34,14 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    fun inverseMethod(): String? {
-        return null
+    fun DUMMYgetAllDogs() {
+        viewModelScope.launch {
+            val allBreeds = getAllBreedsWithPicsUseCase()
+            Log.e("MY_TAG", allBreeds.toString())
+        }
     }
+
+
 
 
 

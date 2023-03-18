@@ -1,6 +1,9 @@
 package com.panasetskaia.dogsapp.data
 
+import android.util.Log
+import com.google.gson.Gson
 import com.google.gson.JsonObject
+import com.google.gson.reflect.TypeToken
 import com.panasetskaia.dogsapp.domain.DogBreed
 import com.panasetskaia.dogsapp.domain.DogRepository
 import javax.inject.Inject
@@ -9,9 +12,21 @@ class DogRepositoryImpl @Inject constructor(
     private val apiService: ApiService
 ): DogRepository {
 
+    private val currentBreedList = mutableListOf<DogBreed>()
+
     override suspend fun getAllBreedsWithPics(): List<DogBreed> {
         val responseJson = apiService.getAllBreedsNames().message
-        return listOf()
+        val breeds = responseJson.keySet()
+        val gson = Gson()
+        val typeToken = object : TypeToken<List<String>>() {}.type
+        breeds.forEach {
+            val subBreedsJsonArray = responseJson.getAsJsonArray(it)
+            val subBreeds = gson.fromJson<List<String>>(subBreedsJsonArray,typeToken)
+            val pics = getSingleBreedSubBreeds(it) ?: listOf()
+            val breed = DogBreed(it, subBreeds, pics)
+            currentBreedList.add(breed)
+        }
+        return currentBreedList
         //todo: implement here
     }
 

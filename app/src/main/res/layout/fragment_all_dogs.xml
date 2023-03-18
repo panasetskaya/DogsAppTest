@@ -15,23 +15,13 @@
         android:layout_height="match_parent"
         tools:context=".presentation.screen_all_dogs.AllDogsFragment">
 
-        <TextView
-            android:id="@+id/tv_dummy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:text="@{viewModel.breedsNames}"
-            android:gravity="center"/>
-
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_dummy"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:onClick="@{v->viewModel.DUMMYgetSingleBreedSubBreeds()}"
+            android:onClick="@{v->viewModel.DUMMYgetAllDogs()}"
             android:text="Get hound subbreeds"/>
 
 
