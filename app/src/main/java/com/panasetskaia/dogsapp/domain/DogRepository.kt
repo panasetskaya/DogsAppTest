@@ -2,10 +2,12 @@ package com.panasetskaia.dogsapp.domain
 
 interface DogRepository {
 
-    suspend fun getAllBreedsWithPics(): List<DogBreed>
+    suspend fun getAllBreedsWithPics(): List<DogBreed>?
 
-    suspend fun getSingleBreedSubBreeds(id: Int): List<String>
+    suspend fun getSingleBreedSubBreeds(breed: String): List<String>?
 
-    suspend fun getSingleBreedPictures(id: Int): List<String>
+    suspend fun getSingleBreedPictures(breed: String): List<String>?
+
+    suspend fun getSingleSubBreedPictures(breed: String, subBreed: String): List<String>?
 
 }

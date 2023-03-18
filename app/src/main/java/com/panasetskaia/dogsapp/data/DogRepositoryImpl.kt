@@ -1,5 +1,6 @@
 package com.panasetskaia.dogsapp.data
 
+import com.google.gson.JsonObject
 import com.panasetskaia.dogsapp.domain.DogBreed
 import com.panasetskaia.dogsapp.domain.DogRepository
 import javax.inject.Inject
@@ -9,14 +10,37 @@ class DogRepositoryImpl @Inject constructor(
 ): DogRepository {
 
     override suspend fun getAllBreedsWithPics(): List<DogBreed> {
-        TODO("Not yet implemented")
+        val responseJson = apiService.getAllBreedsNames().message
+        return listOf()
+        //todo: implement here
     }
 
-    override suspend fun getSingleBreedSubBreeds(id: Int): List<String> {
-        TODO("Not yet implemented")
+    override suspend fun getSingleBreedSubBreeds(breed: String): List<String>? {
+        val response = apiService.getSubBreedsByBreed(breed)
+        return returnIfSuccess(response)
     }
 
-    override suspend fun getSingleBreedPictures(id: Int): List<String> {
-        TODO("Not yet implemented")
+    override suspend fun getSingleBreedPictures(breed: String): List<String>? {
+        val response = apiService.getImagesByBreed(breed)
+        return returnIfSuccess(response)
+    }
+
+    override suspend fun getSingleSubBreedPictures(breed: String, subBreed: String): List<String>? {
+        val response = apiService.getImagesBySubBreed(breed,subBreed)
+        return returnIfSuccess(response)
+    }
+
+    private fun returnIfSuccess(response: DogApiByBreedResponse): List<String>? {
+        return if (response.status==STATUS_SUCCESS) {
+            response.message
+        } else null
+    }
+
+    private fun parseJson(json: JsonObject) {
+
+    }
+
+    companion object {
+        private const val STATUS_SUCCESS = "success"
     }
 }
