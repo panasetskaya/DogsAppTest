@@ -22,8 +22,8 @@ class DogRepositoryImpl @Inject constructor(
         breeds.forEach {
             val subBreedsJsonArray = responseJson.getAsJsonArray(it)
             val subBreeds = gson.fromJson<List<String>>(subBreedsJsonArray,typeToken)
-            val pics = getSingleBreedSubBreeds(it) ?: listOf()
-            val breed = DogBreed(it, subBreeds, pics)
+            val pics = getSingleBreedPictures(it) ?: listOf()
+            val breed = DogBreed(it, pics, subBreeds)
             currentBreedList.add(breed)
         }
         return currentBreedList
