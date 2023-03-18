@@ -8,6 +8,9 @@
         <variable
             name="viewModel"
             type="com.panasetskaia.dogsapp.presentation.MainViewModel" />
+<!--        <variable-->
+<!--            name="breedAdapter"-->
+<!--            type="com.panasetskaia.dogsapp.presentation.screen_all_dogs.BreedsAdapter" />-->
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,8 +18,27 @@
         android:layout_height="match_parent"
         tools:context=".presentation.screen_all_dogs.AllDogsFragment">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_dogs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:spanCount="3"
 
+            android:layout_margin="8dp"
+            android:orientation="vertical"
+            tools:listitem="@layout/item_dog_breed_card"/>
+<!--        android:adapter="@{breedAdapter}"-->
 
+        <ProgressBar
+            android:id="@+id/dogsLoadingProgressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

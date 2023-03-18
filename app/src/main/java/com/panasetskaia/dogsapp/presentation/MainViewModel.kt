@@ -1,6 +1,9 @@
 package com.panasetskaia.dogsapp.presentation
 
 import android.util.Log
+import android.widget.Toast
+import androidx.databinding.BaseObservable
+import androidx.databinding.Observable
 import androidx.lifecycle.viewModelScope
 import com.panasetskaia.dogsapp.base.BaseViewModel
 import com.panasetskaia.dogsapp.domain.DogBreed
@@ -26,8 +29,12 @@ class MainViewModel @Inject constructor(
     private val _breedName = MutableStateFlow<String?>(null)
     val breedNameFlow: StateFlow<String?> = _breedName
 
+    private val _isLoading = MutableStateFlow(true)
+    val isLoading: StateFlow<Boolean> = _isLoading
+
     fun goToAllDogsFragmentClicked() {
         navigate(InitialFragmentDirections.actionInitialFragmentToAllDogsFragment())
+        Log.e("MY_TAG", "goToAllDogsFragmentClicked()")
     }
 
     fun goToDetailsFragmentClicked(breed: String) {
@@ -39,21 +46,14 @@ class MainViewModel @Inject constructor(
 
     fun getAllDogBreeds() {
         viewModelScope.launch {
+            _isLoading.value = true
             val breedsList = getAllBreedsWithPicsUseCase()
             if (breedsList!=null) {
                 _allDogs.value = NetworkResult.success(breedsList)
             } else {
                 _allDogs.value = NetworkResult.error()
             }
+            _isLoading.value = false
         }
     }
-
-
-
-//    fun DUMMYgetSingleBreedSubBreeds() {
-//        viewModelScope.launch {
-//            val subBreeds = getSingleBreedSubBreeds("hound")
-//            _breedsNames.value = subBreeds.toString()
-//        }
-//    }
 }
