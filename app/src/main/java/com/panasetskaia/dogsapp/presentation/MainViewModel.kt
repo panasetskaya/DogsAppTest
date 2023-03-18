@@ -34,7 +34,6 @@ class MainViewModel @Inject constructor(
 
     fun goToAllDogsFragmentClicked() {
         navigate(InitialFragmentDirections.actionInitialFragmentToAllDogsFragment())
-        Log.e("MY_TAG", "goToAllDogsFragmentClicked()")
     }
 
     fun goToDetailsFragmentClicked(breed: String) {

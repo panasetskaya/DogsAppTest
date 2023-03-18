@@ -50,7 +50,7 @@ class AllDogsFragment : BaseFragment<FragmentAllDogsBinding, MainViewModel>() {
                             breedAdapter.submitList(it.data)
                         }
                         Status.ERROR -> {
-                            Toast.makeText(requireActivity(), "There must be a mistake", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireActivity(), R.string.network_mistake, Toast.LENGTH_SHORT).show()
                         }
                         Status.LOADING ->{
 

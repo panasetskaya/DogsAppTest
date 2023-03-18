@@ -7,6 +7,9 @@
         <variable
             name="dogBreed"
             type="com.panasetskaia.dogsapp.domain.DogBreed" />
+        <variable
+            name="viewModel"
+            type="com.panasetskaia.dogsapp.presentation.MainViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
