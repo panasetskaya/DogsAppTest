@@ -2,18 +2,11 @@ package com.panasetskaia.dogsapp.presentation.screen_all_dogs
 
 import android.content.Context
 import android.os.Bundle
-import android.widget.Toast
-import androidx.lifecycle.Lifecycle
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import com.panasetskaia.dogsapp.R
 import com.panasetskaia.dogsapp.databinding.FragmentAllDogsBinding
 import com.panasetskaia.dogsapp.presentation.MainViewModel
 import com.panasetskaia.dogsapp.presentation.base.BaseFragment
-import com.panasetskaia.dogsapp.presentation.base.Status
 import com.panasetskaia.utils.getAppComponent
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class AllDogsFragment : BaseFragment<FragmentAllDogsBinding, MainViewModel>() {
@@ -37,31 +30,6 @@ class AllDogsFragment : BaseFragment<FragmentAllDogsBinding, MainViewModel>() {
         binding.viewModel = viewModel
         breedAdapter.onItemClickListener = {
             viewModel.goToDetailsFragmentClicked(it.name)
-        }
-        collectFlow()
-    }
-
-    private fun collectFlow() {
-        viewLifecycleOwner.lifecycleScope.launch {
-            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-                viewModel.allDogs.collectLatest {
-                    when (it.status) {
-                        Status.SUCCESS -> {
-                            breedAdapter.submitList(it.data)
-                        }
-                        Status.ERROR -> {
-                            Toast.makeText(
-                                requireActivity(),
-                                R.string.network_mistake,
-                                Toast.LENGTH_SHORT
-                            ).show()
-                        }
-                        Status.LOADING -> {
-
-                        }
-                    }
-                }
-            }
         }
     }
 }

@@ -29,6 +29,7 @@
             android:layout_margin="8dp"
             android:orientation="vertical"
             android:adapter="@{mbreedsAdapter}"
+            app:submittedData="@{viewModel.allDogs}"
             tools:listitem="@layout/item_dog_breed_card"/>
 
         <com.google.android.material.textfield.TextInputLayout

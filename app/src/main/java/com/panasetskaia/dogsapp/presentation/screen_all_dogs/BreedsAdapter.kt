@@ -2,18 +2,16 @@ package com.panasetskaia.dogsapp.presentation.screen_all_dogs
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.ImageView
-import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.panasetskaia.dogsapp.R
 import com.panasetskaia.dogsapp.databinding.ItemDogBreedCardBinding
 import com.panasetskaia.dogsapp.domain.DogBreed
 
-class BreedsAdapter(private val lifecycleOwner: LifecycleOwner): ListAdapter<DogBreed, BreedsAdapter.BreedViewHolder>(BreedsDiffUtil()) {
+class BreedsAdapter(val lifecycleOwner: LifecycleOwner) :
+    ListAdapter<DogBreed, BreedsAdapter.BreedViewHolder>(BreedsDiffUtil()) {
 
     var onItemClickListener: ((DogBreed) -> Unit)? = null
 
@@ -22,7 +20,12 @@ class BreedsAdapter(private val lifecycleOwner: LifecycleOwner): ListAdapter<Dog
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BreedViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = DataBindingUtil.inflate<ItemDogBreedCardBinding>(inflater, R.layout.item_dog_breed_card, parent, false)
+        val binding = DataBindingUtil.inflate<ItemDogBreedCardBinding>(
+            inflater,
+            R.layout.item_dog_breed_card,
+            parent,
+            false
+        )
         binding.lifecycleOwner = lifecycleOwner
         return BreedViewHolder(binding)
     }

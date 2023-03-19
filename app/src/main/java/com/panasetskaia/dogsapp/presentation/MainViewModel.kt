@@ -2,13 +2,8 @@ package com.panasetskaia.dogsapp.presentation
 
 import android.view.View
 import android.widget.AdapterView
-import android.widget.EditText
-import androidx.databinding.BindingAdapter
-import androidx.databinding.InverseMethod
 import androidx.lifecycle.viewModelScope
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.panasetskaia.dogsapp.domain.*
+import com.panasetskaia.dogsapp.domain.DogBreed
 import com.panasetskaia.dogsapp.domain.usecases.GetAllBreedsWithPicsUseCase
 import com.panasetskaia.dogsapp.domain.usecases.GetSingleBreedRandomPicture
 import com.panasetskaia.dogsapp.domain.usecases.GetSingleBreedSubBreeds
