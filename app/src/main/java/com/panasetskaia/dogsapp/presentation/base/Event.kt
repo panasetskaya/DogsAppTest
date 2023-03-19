@@ -1,4 +1,4 @@
-package com.panasetskaia.utils
+package com.panasetskaia.dogsapp.presentation.base
 
 open class Event<out T>(private val content: T) {
 

@@ -1,4 +1,4 @@
-package com.panasetskaia.dogsapp.data
+package com.panasetskaia.dogsapp.data.network.responses
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

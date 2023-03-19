@@ -1,4 +1,4 @@
-package com.panasetskaia.dogsapp.presentation
+package com.panasetskaia.dogsapp.presentation.base
 
 data class NetworkResult<out T>(val status: Status, val data: T?) {
 

@@ -11,7 +11,7 @@ import com.panasetskaia.dogsapp.R
 import com.panasetskaia.dogsapp.presentation.base.BaseFragment
 import com.panasetskaia.dogsapp.databinding.FragmentAllDogsBinding
 import com.panasetskaia.dogsapp.presentation.MainViewModel
-import com.panasetskaia.dogsapp.presentation.Status
+import com.panasetskaia.dogsapp.presentation.base.Status
 import com.panasetskaia.utils.MY_LOG_TAG
 import com.panasetskaia.utils.getAppComponent
 import kotlinx.coroutines.flow.collectLatest

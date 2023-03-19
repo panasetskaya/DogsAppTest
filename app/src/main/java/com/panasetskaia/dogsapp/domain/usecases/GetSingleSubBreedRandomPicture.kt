@@ -1,5 +1,6 @@
-package com.panasetskaia.dogsapp.domain
+package com.panasetskaia.dogsapp.domain.usecases
 
+import com.panasetskaia.dogsapp.domain.DogRepository
 import javax.inject.Inject
 
 class GetSingleSubBreedRandomPicture @Inject constructor(private val repo: DogRepository) {

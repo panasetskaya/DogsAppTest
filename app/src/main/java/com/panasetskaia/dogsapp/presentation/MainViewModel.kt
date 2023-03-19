@@ -3,8 +3,13 @@ package com.panasetskaia.dogsapp.presentation
 import android.view.View
 import android.widget.AdapterView
 import androidx.lifecycle.viewModelScope
-import com.panasetskaia.dogsapp.presentation.base.BaseViewModel
 import com.panasetskaia.dogsapp.domain.*
+import com.panasetskaia.dogsapp.domain.usecases.GetAllBreedsWithPicsUseCase
+import com.panasetskaia.dogsapp.domain.usecases.GetSingleBreedRandomPicture
+import com.panasetskaia.dogsapp.domain.usecases.GetSingleBreedSubBreeds
+import com.panasetskaia.dogsapp.domain.usecases.GetSingleSubBreedRandomPicture
+import com.panasetskaia.dogsapp.presentation.base.BaseViewModel
+import com.panasetskaia.dogsapp.presentation.base.NetworkResult
 import com.panasetskaia.dogsapp.presentation.screen_all_dogs.AllDogsFragmentDirections
 import com.panasetskaia.dogsapp.presentation.screen_initial.InitialFragmentDirections
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -34,17 +39,17 @@ class MainViewModel @Inject constructor(
     private val _subBreedsFlow = MutableStateFlow<ArrayList<String>?>(null)
     val subBreedsFlow: StateFlow<ArrayList<String>?> = _subBreedsFlow
 
-    val spinnerPos = MutableStateFlow<Int?>(null)
-
-    val clicksListener =  object : AdapterView.OnItemSelectedListener {
+    val clicksListener = object : AdapterView.OnItemSelectedListener {
         override fun onNothingSelected(parent: AdapterView<*>?) {
         }
+
         override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-            if (breedNameFlow.value!=null && subBreedsFlow.value!=null) {
-                viewModelScope.launch {
-                    val subBreed = subBreedsFlow.value!![position]
-                    val url = getSingleSubBreedRandomPicture(breedNameFlow.value!!, subBreed)
-                    _singlePicUrl.value = url
+            viewModelScope.launch {
+                breedNameFlow.value?.let { breed ->
+                    subBreedsFlow.value?.let { subBreeds ->
+                        val url = getSingleSubBreedRandomPicture(breed, subBreeds[position])
+                        _singlePicUrl.value = url
+                    }
                 }
             }
         }
@@ -55,19 +60,16 @@ class MainViewModel @Inject constructor(
     }
 
     fun goToDetailsFragmentClicked(breed: String) {
-        viewModelScope.launch {
-            navigate(AllDogsFragmentDirections.actionAllDogsFragmentToDogDetailsFragment(breed))
-        }
+        navigate(AllDogsFragmentDirections.actionAllDogsFragmentToDogDetailsFragment(breed))
     }
 
     fun getAnotherRandomPicByBreed() {
-        viewModelScope.launch{
+        viewModelScope.launch {
             breedNameFlow.value?.let {
                 val url = getSingleBreedRandomPicture(it)
                 _singlePicUrl.value = url
             }
         }
-
     }
 
     fun changeCurrentBreed(breed: String) {
@@ -77,10 +79,6 @@ class MainViewModel @Inject constructor(
             _singlePicUrl.value = url
             val subBreeds = getSingleBreedSubBreeds(breed)
             _subBreedsFlow.value = subBreeds as ArrayList<String>?
-            subBreeds?.let {
-                spinnerPos.value = it.size-1
-            }
-
         }
     }
 

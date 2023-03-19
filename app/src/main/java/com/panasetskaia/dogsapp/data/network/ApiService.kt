@@ -1,5 +1,8 @@
-package com.panasetskaia.dogsapp.data
+package com.panasetskaia.dogsapp.data.network
 
+import com.panasetskaia.dogsapp.data.network.responses.DogApiAllDogsResponse
+import com.panasetskaia.dogsapp.data.network.responses.DogApiByBreedResponse
+import com.panasetskaia.dogsapp.data.network.responses.DogApiRandomPicResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 

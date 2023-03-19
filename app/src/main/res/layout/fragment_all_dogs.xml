@@ -25,7 +25,6 @@
             android:orientation="vertical"
             tools:listitem="@layout/item_dog_breed_card"/>
 
-
         <ProgressBar
             android:id="@+id/dogsLoadingProgressBar"
             android:layout_width="wrap_content"
