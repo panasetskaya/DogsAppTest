@@ -3,7 +3,7 @@ package com.panasetskaia.dogsapp.presentation.screen_initial
 import android.content.Context
 import android.os.Bundle
 import com.panasetskaia.dogsapp.R
-import com.panasetskaia.dogsapp.base.BaseFragment
+import com.panasetskaia.dogsapp.presentation.base.BaseFragment
 import com.panasetskaia.dogsapp.databinding.FragmentInitialBinding
 import com.panasetskaia.dogsapp.presentation.MainViewModel
 import com.panasetskaia.utils.getAppComponent

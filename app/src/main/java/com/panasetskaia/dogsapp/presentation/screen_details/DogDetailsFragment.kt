@@ -4,7 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import androidx.navigation.fragment.navArgs
 import com.panasetskaia.dogsapp.R
-import com.panasetskaia.dogsapp.base.BaseFragment
+import com.panasetskaia.dogsapp.presentation.base.BaseFragment
 import com.panasetskaia.dogsapp.databinding.FragmentDogDetailsBinding
 import com.panasetskaia.dogsapp.presentation.MainViewModel
 import com.panasetskaia.utils.getAppComponent

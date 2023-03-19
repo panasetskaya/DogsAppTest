@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <import type="android.view.View" />
-
         <variable
             name="viewModel"
             type="com.panasetskaia.dogsapp.presentation.MainViewModel" />
@@ -22,6 +20,7 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_margin="16dp"
+            android:contentDescription="@string/go_back"
             android:onClick="@{v->viewModel.navigateBack()}"
             android:src="@drawable/ic_arrow_back"
             app:layout_constraintStart_toStartOf="parent"
@@ -127,7 +126,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:barrierDirection="bottom"
-
             app:constraint_referenced_ids="subBreedsSpinner, tv_breed_name" />
 
         <androidx.constraintlayout.widget.Barrier

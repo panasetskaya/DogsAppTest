@@ -1,4 +1,4 @@
-package com.panasetskaia.dogsapp.base
+package com.panasetskaia.dogsapp.presentation.base
 
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavDirections

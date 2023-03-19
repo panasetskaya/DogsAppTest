@@ -8,7 +8,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.panasetskaia.dogsapp.R
-import com.panasetskaia.dogsapp.base.BaseFragment
+import com.panasetskaia.dogsapp.presentation.base.BaseFragment
 import com.panasetskaia.dogsapp.databinding.FragmentAllDogsBinding
 import com.panasetskaia.dogsapp.presentation.MainViewModel
 import com.panasetskaia.dogsapp.presentation.Status

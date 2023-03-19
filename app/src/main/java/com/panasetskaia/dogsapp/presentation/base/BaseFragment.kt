@@ -1,4 +1,4 @@
-package com.panasetskaia.dogsapp.base
+package com.panasetskaia.dogsapp.presentation.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

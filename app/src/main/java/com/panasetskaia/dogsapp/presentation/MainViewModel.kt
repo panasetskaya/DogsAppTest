@@ -3,7 +3,7 @@ package com.panasetskaia.dogsapp.presentation
 import android.view.View
 import android.widget.AdapterView
 import androidx.lifecycle.viewModelScope
-import com.panasetskaia.dogsapp.base.BaseViewModel
+import com.panasetskaia.dogsapp.presentation.base.BaseViewModel
 import com.panasetskaia.dogsapp.domain.*
 import com.panasetskaia.dogsapp.presentation.screen_all_dogs.AllDogsFragmentDirections
 import com.panasetskaia.dogsapp.presentation.screen_initial.InitialFragmentDirections
