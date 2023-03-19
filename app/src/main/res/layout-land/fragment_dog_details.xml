@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.panasetskaia.dogsapp.presentation.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.DogDetailsFragment">
+
+        <ImageView
+            android:id="@+id/arrow_back"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_margin="16dp"
+            android:onClick="@{v->viewModel.navigateBack()}"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_single_pic"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_margin="16dp"
+            android:contentDescription="@string/breed_pic_description"
+            android:scaleType="centerCrop"
+            app:imageUrl="@{viewModel.singlePictureFlow}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toStartOf="@+id/guide_line_for_picture"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/arrow_back"
+            tools:src="@drawable/ic_launcher_background" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guide_line_for_picture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <TextView
+            android:id="@+id/tv_this_is"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:gravity="center"
+            android:text="@string/this_is_a"
+            app:layout_constraintBottom_toTopOf="@id/tv_breed_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/guide_line_for_picture"
+            app:layout_constraintTop_toTopOf="@+id/arrow_back"
+            app:layout_constraintVertical_chainStyle="spread"
+            />
+
+        <TextView
+            android:id="@+id/tv_breed_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@{viewModel.breedNameFlow}"
+            android:textAllCaps="true"
+            android:autoSizeTextType="uniform"
+            android:textSize="42sp"
+            android:lines="1"
+            app:layout_constraintBottom_toTopOf="@+id/barrier_for_breedname"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/guide_line_for_picture"
+            app:layout_constraintTop_toBottomOf="@+id/tv_this_is" />
+
+        <TextView
+            android:id="@+id/tv_there_are_subbreeds"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="18dp"
+            android:gravity="center"
+            android:text="@string/there_are_subbreeds"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/guide_line_for_picture"
+            app:layout_constraintTop_toBottomOf="@+id/tv_breed_name" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/get_another_pic_button"
+            style="@style/MyRoundButtonsStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.getAnotherRandomPicByBreed()}"
+            android:text="@string/get_another_pic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/guide_line_for_picture"
+            app:layout_constraintTop_toBottomOf="@+id/barrier_for_button"
+            app:strokeColor="@color/orange" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/subBreedsSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="18dp"
+            android:entries="@{viewModel.subBreedsFlow}"
+            android:gravity="center"
+            android:selectedItemPosition="@={viewModel.spinnerPos}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/guide_line_for_picture"
+            app:layout_constraintTop_toBottomOf="@+id/tv_there_are_subbreeds"
+            tools:setOnItemSelectedListener="@{viewModel.clicksListener}" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_for_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+
+            app:constraint_referenced_ids="subBreedsSpinner, tv_breed_name" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/barrier_for_breedname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="top"
+            app:constraint_referenced_ids="tv_there_are_subbreeds, get_another_pic_button" />
+
+        <androidx.constraintlayout.widget.Group
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{(viewModel.subBreedsFlow != null &amp;&amp; !viewModel.subBreedsFlow.isEmpty()) ? View.VISIBLE : View.GONE, default = gone}"
+            app:constraint_referenced_ids="subBreedsSpinner,tv_there_are_subbreeds" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

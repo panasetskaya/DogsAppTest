@@ -70,6 +70,9 @@
             android:layout_margin="16dp"
             android:textAllCaps="true"
             android:textSize="42sp"
+            android:autoSizeMinTextSize="24sp"
+            android:autoSizeTextType="uniform"
+            android:lines="1"
             tools:text="hound"
             android:gravity="center"/>
 
@@ -78,7 +81,6 @@
             android:layout_height="wrap_content"
             android:text="@string/get_another_pic"
             android:onClick="@{() -> viewModel.getAnotherRandomPicByBreed()}"
-            android:visibility="@{(viewModel.subBreedsFlow == null || viewModel.subBreedsFlow.size()&lt;2) ? View.VISIBLE : View.GONE, default = visible}"
             style="@style/MyRoundButtonsStyle"
             app:strokeColor="@color/orange"
             android:layout_marginTop="32dp"
@@ -86,20 +88,32 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/barrier_for_button" />
 
+        <TextView
+            android:id="@+id/tv_there_are_subbreeds"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/there_are_subbreeds"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_breed_name"
+            android:gravity="center"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"/>
+
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/subBreedsSpinner"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_breed_name"
+            app:layout_constraintTop_toBottomOf="@+id/tv_there_are_subbreeds"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="32dp"
             android:gravity="center"
             tools:setOnItemSelectedListener="@{viewModel.clicksListener}"
             android:entries="@{viewModel.subBreedsFlow}"
-            android:visibility="@{(viewModel.subBreedsFlow != null &amp;&amp; !viewModel.subBreedsFlow.isEmpty()) ? View.VISIBLE : View.GONE, default = gone}"
             android:selectedItemPosition="@={viewModel.spinnerPos}"/>
 
         <androidx.constraintlayout.widget.Barrier
@@ -109,14 +123,13 @@
             app:barrierDirection="bottom"
             app:constraint_referenced_ids="subBreedsSpinner, tv_breed_name"/>
 
-<!--        <Button-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/tv_dummy"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            android:onClick="@{v->viewModel.DUMMYgetSingleBreedSubBreeds()}"-->
-<!--            android:text="Get hound subbreeds"/>-->
+
+        <androidx.constraintlayout.widget.Group
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="subBreedsSpinner,tv_there_are_subbreeds"
+            android:visibility="@{(viewModel.subBreedsFlow != null &amp;&amp; !viewModel.subBreedsFlow.isEmpty()) ? View.VISIBLE : View.GONE, default = gone}"
+            />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

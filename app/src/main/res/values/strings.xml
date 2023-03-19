@@ -2,7 +2,8 @@
     <string name="app_name">Dogs app</string>
 
     <!-- Initial fragment -->
-    <string name="initial_text">Hello!\nThis is DogBreed,\na little app made to help you explore\nthe amazing world of dogs,\nbig and small.\nJust click on a picture and find out what breed it is!</string>
+    <string name="initial_text">Hello!\n\nThis is DogBreed,\na little app made to help you explore
+        \nthe amazing world of dogs,\nbig and small.\n\nJust click on a picture and find out what breed it is!</string>
     <string name="take_a_look">Take a look</string>
 
 
@@ -13,4 +14,5 @@
     <!-- DogDetails fragment -->
     <string name="this_is_a">We present you…</string>
     <string name="get_another_pic">Get another pic</string>
+    <string name="there_are_subbreeds">There are also some subbreeds:</string>
 </resources>

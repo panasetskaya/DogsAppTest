@@ -8,9 +8,13 @@ import androidx.annotation.LayoutRes
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import com.panasetskaia.navigation.NavigationCommand
-import com.panasetskaia.utils.observeNonNull
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 
 abstract class BaseFragment<mbinding : ViewDataBinding, mviewModel : BaseViewModel> : Fragment() {
@@ -50,9 +54,15 @@ abstract class BaseFragment<mbinding : ViewDataBinding, mviewModel : BaseViewMod
     }
 
     private fun observeNavigation() {
-        viewModel.navigation.observeNonNull(viewLifecycleOwner) {
-            it.getContentIfNotHandled()?.let { navigationCommand ->
-                handleNavigation(navigationCommand)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                launch {
+                    viewModel.navigation.collectLatest {
+                        it?.getContentIfNotHandled()?.let { navigationCommand ->
+                            handleNavigation(navigationCommand)
+                        }
+                    }
+                }
             }
         }
     }
@@ -65,7 +75,6 @@ abstract class BaseFragment<mbinding : ViewDataBinding, mviewModel : BaseViewMod
     }
 
     companion object {
-//        const val _all = 0
         const val viewModelConst = 1
     }
 
