@@ -39,7 +39,6 @@ class AllDogsFragment : BaseFragment<FragmentAllDogsBinding, MainViewModel>() {
         binding.viewModel = viewModel
         breedAdapter.onItemClickListener = {
             viewModel.goToDetailsFragmentClicked(it.name)
-            Log.e(MY_LOG_TAG, "goToDetailsFragmentClicked with breed: ${it.name}")
         }
         collectFlow()
     }

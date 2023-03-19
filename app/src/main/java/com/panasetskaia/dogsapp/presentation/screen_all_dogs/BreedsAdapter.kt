@@ -2,10 +2,13 @@ package com.panasetskaia.dogsapp.presentation.screen_all_dogs
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.panasetskaia.dogsapp.R
 import com.panasetskaia.dogsapp.databinding.ItemDogBreedCardBinding
 import com.panasetskaia.dogsapp.domain.DogBreed
@@ -33,4 +36,13 @@ class BreedsAdapter(private val lifecycleOwner: LifecycleOwner): ListAdapter<Dog
         }
     }
 
+    companion object {
+        @JvmStatic
+        @BindingAdapter("imageUrl")
+        fun setImageUrl(imgView: ImageView, imgUrl: String?) {
+            Glide.with(imgView.context).load(imgUrl)
+                .placeholder(R.drawable.pic_drawable_placeholder)
+                .into(imgView)
+        }
+    }
 }
