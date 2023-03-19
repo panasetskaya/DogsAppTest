@@ -18,7 +18,8 @@
         android:label="AllDogsFragment" >
         <action
             android:id="@+id/action_allDogsFragment_to_dogDetailsFragment"
-            app:destination="@id/dogDetailsFragment" />
+            app:destination="@id/dogDetailsFragment"
+            app:enterAnim="@anim/slide_in" />
     </fragment>
     <fragment
         android:id="@+id/dogDetailsFragment"
