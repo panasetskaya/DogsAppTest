@@ -1,13 +1,12 @@
-package com.panasetskaia.dogsapp.data
+package com.panasetskaia.dogsapp.data.network.responses
 
-import com.google.gson.JsonObject
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class DogApiAllDogsResponse(
+data class DogApiByBreedResponse(
     @SerializedName("message")
     @Expose
-    override val message: JsonObject,
+    override val message: ArrayList<String>,
 
     @SerializedName("status")
     @Expose

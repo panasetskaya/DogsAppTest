@@ -4,6 +4,8 @@ import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
+import com.panasetskaia.dogsapp.data.network.ApiService
+import com.panasetskaia.dogsapp.data.network.responses.Response
 import com.panasetskaia.dogsapp.domain.DogBreed
 import com.panasetskaia.dogsapp.domain.DogRepository
 import com.panasetskaia.utils.MY_LOG_TAG

@@ -1,4 +1,4 @@
-package com.panasetskaia.dogsapp.data
+package com.panasetskaia.dogsapp.data.network
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

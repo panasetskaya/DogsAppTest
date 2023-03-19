@@ -115,11 +115,11 @@
             android:layout_marginTop="18dp"
             android:entries="@{viewModel.subBreedsFlow}"
             android:gravity="center"
-            android:selectedItemPosition="@={viewModel.spinnerPos}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/guide_line_for_picture"
             app:layout_constraintTop_toBottomOf="@+id/tv_there_are_subbreeds"
-            tools:setOnItemSelectedListener="@{viewModel.clicksListener}" />
+            tools:setOnItemSelectedListener="@{viewModel.clicksListener}"
+            />
 
         <androidx.constraintlayout.widget.Barrier
             android:id="@+id/barrier_for_button"

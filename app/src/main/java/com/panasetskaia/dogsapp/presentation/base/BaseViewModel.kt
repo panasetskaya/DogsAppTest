@@ -3,7 +3,6 @@ package com.panasetskaia.dogsapp.presentation.base
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavDirections
 import com.panasetskaia.navigation.NavigationCommand
-import com.panasetskaia.utils.Event
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 

@@ -1,7 +1,7 @@
 package com.panasetskaia.dogsapp.di
 
-import com.panasetskaia.dogsapp.data.ApiFactory
-import com.panasetskaia.dogsapp.data.ApiService
+import com.panasetskaia.dogsapp.data.network.ApiFactory
+import com.panasetskaia.dogsapp.data.network.ApiService
 import com.panasetskaia.dogsapp.data.DogRepositoryImpl
 import com.panasetskaia.dogsapp.domain.DogRepository
 import dagger.Binds
