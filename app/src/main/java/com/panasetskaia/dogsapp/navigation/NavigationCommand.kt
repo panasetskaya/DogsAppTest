@@ -1,4 +1,4 @@
-package com.panasetskaia.navigation
+package com.panasetskaia.dogsapp.navigation
 
 import androidx.navigation.NavDirections
 

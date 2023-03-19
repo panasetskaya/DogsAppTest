@@ -8,7 +8,7 @@ import com.panasetskaia.dogsapp.data.network.ApiService
 import com.panasetskaia.dogsapp.data.network.responses.Response
 import com.panasetskaia.dogsapp.domain.DogBreed
 import com.panasetskaia.dogsapp.domain.DogRepository
-import com.panasetskaia.utils.MY_LOG_TAG
+import com.panasetskaia.dogsapp.utils.MY_LOG_TAG
 import javax.inject.Inject
 
 class DogRepositoryImpl @Inject constructor(

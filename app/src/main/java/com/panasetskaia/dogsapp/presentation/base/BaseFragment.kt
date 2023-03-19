@@ -12,7 +12,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
-import com.panasetskaia.navigation.NavigationCommand
+import com.panasetskaia.dogsapp.navigation.NavigationCommand
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 

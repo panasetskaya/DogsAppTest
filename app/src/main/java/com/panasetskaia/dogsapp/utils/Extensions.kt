@@ -1,4 +1,4 @@
-package com.panasetskaia.utils
+package com.panasetskaia.dogsapp.utils
 
 import androidx.fragment.app.Fragment
 import com.panasetskaia.dogsapp.application.DogApplication

@@ -6,7 +6,7 @@ import com.panasetskaia.dogsapp.R
 import com.panasetskaia.dogsapp.presentation.base.BaseFragment
 import com.panasetskaia.dogsapp.databinding.FragmentInitialBinding
 import com.panasetskaia.dogsapp.presentation.MainViewModel
-import com.panasetskaia.utils.getAppComponent
+import com.panasetskaia.dogsapp.utils.getAppComponent
 import javax.inject.Inject
 
 class InitialFragment :
