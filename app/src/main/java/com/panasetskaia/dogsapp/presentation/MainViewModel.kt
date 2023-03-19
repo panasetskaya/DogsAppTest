@@ -2,7 +2,12 @@ package com.panasetskaia.dogsapp.presentation
 
 import android.view.View
 import android.widget.AdapterView
+import android.widget.EditText
+import androidx.databinding.BindingAdapter
+import androidx.databinding.InverseMethod
 import androidx.lifecycle.viewModelScope
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.panasetskaia.dogsapp.domain.*
 import com.panasetskaia.dogsapp.domain.usecases.GetAllBreedsWithPicsUseCase
 import com.panasetskaia.dogsapp.domain.usecases.GetSingleBreedRandomPicture
@@ -38,6 +43,8 @@ class MainViewModel @Inject constructor(
 
     private val _subBreedsFlow = MutableStateFlow<ArrayList<String>?>(null)
     val subBreedsFlow: StateFlow<ArrayList<String>?> = _subBreedsFlow
+
+    val spansCountFlow = MutableStateFlow(3)
 
     val clicksListener = object : AdapterView.OnItemSelectedListener {
         override fun onNothingSelected(parent: AdapterView<*>?) {

@@ -5,8 +5,10 @@
 
     <data>
         <import type="android.view.View" />
-
         <variable
+            name="mbreedsAdapter"
+            type="com.panasetskaia.dogsapp.presentation.screen_all_dogs.BreedsAdapter" />
+         <variable
             name="viewModel"
             type="com.panasetskaia.dogsapp.presentation.MainViewModel" />
     </data>
@@ -19,12 +21,43 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view_dogs"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/ti_how_many_spans"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="3"
+            app:mSpanCount="@{viewModel.spansCountFlow}"
             android:layout_margin="8dp"
             android:orientation="vertical"
+            android:adapter="@{mbreedsAdapter}"
             tools:listitem="@layout/item_dog_breed_card"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/ti_how_many_spans"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:hint="@string/how_many"
+            app:boxStrokeColor="?attr/colorPrimary"
+            app:endIconMode="clear_text"
+            app:hintTextColor="@color/orange"
+            android:nestedScrollingEnabled="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:visibility="@{viewModel.isLoading ? View.GONE : View.VISIBLE}">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_how_many_spans"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="48dp"
+                android:text="@={`` +viewModel.spansCountFlow}"
+                android:textColorHint="@color/orange"
+                android:inputType="number"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
         <ProgressBar
             android:id="@+id/dogsLoadingProgressBar"

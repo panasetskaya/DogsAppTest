@@ -6,14 +6,15 @@
         \nthe amazing world of dogs,\nbig and small.\n\nJust click on a picture and find out what breed it is!</string>
     <string name="take_a_look">Take a look</string>
 
-
     <!-- AllDogs fragment -->
     <string name="network_mistake">Sorry, there must be some mistake!</string>
     <string name="breed_pic_description">This a picture of a breed</string>
+    <string name="how_many">How many columns do you want?</string>
 
     <!-- DogDetails fragment -->
     <string name="this_is_a">We present you…</string>
     <string name="get_another_pic">Get another pic</string>
     <string name="there_are_subbreeds">There are also some subbreeds:</string>
     <string name="go_back">Go back</string>
+
 </resources>

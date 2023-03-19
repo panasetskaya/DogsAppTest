@@ -35,14 +35,4 @@ class BreedsAdapter(private val lifecycleOwner: LifecycleOwner): ListAdapter<Dog
             true
         }
     }
-
-    companion object {
-        @JvmStatic
-        @BindingAdapter("imageUrl")
-        fun setImageUrl(imgView: ImageView, imgUrl: String?) {
-            Glide.with(imgView.context).load(imgUrl)
-                .placeholder(R.drawable.pic_drawable_placeholder)
-                .into(imgView)
-        }
-    }
 }
