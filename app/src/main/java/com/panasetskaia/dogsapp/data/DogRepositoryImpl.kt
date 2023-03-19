@@ -6,6 +6,7 @@ import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 import com.panasetskaia.dogsapp.domain.DogBreed
 import com.panasetskaia.dogsapp.domain.DogRepository
+import com.panasetskaia.utils.MY_LOG_TAG
 import javax.inject.Inject
 
 class DogRepositoryImpl @Inject constructor(
@@ -15,7 +16,7 @@ class DogRepositoryImpl @Inject constructor(
     private var currentBreedList: MutableList<DogBreed>? = null
 
     override suspend fun getAllBreedsWithPics(): List<DogBreed>? {
-        if (currentBreedList==null) {
+        if (currentBreedList == null) {
             try {
                 val response = apiService.getAllBreedsNames()
                 if (response.status == STATUS_SUCCESS) {
@@ -24,35 +25,41 @@ class DogRepositoryImpl @Inject constructor(
                     parseJson(responseJson)
                 }
             } catch (e: Exception) {
-                Log.e("MY_TAG", "${e.message}")
+                Log.e(MY_LOG_TAG, "${e.message}")
             }
         }
         return currentBreedList
     }
 
     override suspend fun getSingleBreedSubBreeds(breed: String): List<String>? {
-        val response = apiService.getSubBreedsByBreed(breed)
-        val message = returnListIfSuccess(response)
-        if (message is List<*>) {
-            return message
-        }
-        return returnListIfSuccess(response)
+        val result = returnIfSuccess(apiService.getSubBreedsByBreed(breed))
+        return if (result is List<*>) result as List<String> else null
+    }
+
+    override suspend fun getSingleSubBreedRandomPicture(breed: String, subBreed: String): String? {
+        val result = returnIfSuccess(apiService.getRandomPicBySubBreed(breed,subBreed))
+        return if (result is String) result else null
+    }
+
+    override suspend fun getSingleBreedRandomPicture(breed: String): String? {
+        val result = returnIfSuccess(apiService.getRandomPicByBreed(breed))
+        return if (result is String) result else null
     }
 
     private suspend fun getSingleBreedPictures(breed: String): List<String>? {
-        val response = apiService.getImagesByBreed(breed)
-        return returnListIfSuccess(response)
+        val result = returnIfSuccess(apiService.getImagesByBreed(breed))
+        return if (result is List<*>) result as List<String> else null
     }
 
-    override suspend fun getSingleSubBreedPictures(breed: String, subBreed: String): List<String>? {
-        val response = apiService.getImagesBySubBreed(breed, subBreed)
-        return returnListIfSuccess(response)
-    }
-
-    private fun returnListIfSuccess(response: DogApiByBreedResponse): List<String>? {
-        return if (response.status == STATUS_SUCCESS) {
-            response.message
-        } else null
+    private fun returnIfSuccess(response: Response): Any? {
+        return try {
+            if (response.status == STATUS_SUCCESS) {
+                response.message
+            } else null
+        } catch (e: Exception) {
+            Log.e(MY_LOG_TAG, "${e.message}")
+            null
+        }
     }
 
     private suspend fun parseJson(jsonObject: JsonObject) {

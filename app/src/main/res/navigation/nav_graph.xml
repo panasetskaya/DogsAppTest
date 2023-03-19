@@ -24,10 +24,9 @@
         android:id="@+id/dogDetailsFragment"
         android:name="com.panasetskaia.dogsapp.presentation.screen_details.DogDetailsFragment"
         android:label="DogDetailsFragment" >
-<!--        <argument-->
-<!--            android:name="breedName"-->
-<!--            app:argType="string"-->
-<!--            app:nullable="true"-->
-<!--            android:defaultValue="@null" />-->
+        <argument
+            android:name="breedName"
+            app:argType="string"
+            app:nullable="false" />
     </fragment>
 </navigation>

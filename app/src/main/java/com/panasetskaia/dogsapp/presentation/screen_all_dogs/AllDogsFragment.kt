@@ -2,6 +2,7 @@ package com.panasetskaia.dogsapp.presentation.screen_all_dogs
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -11,6 +12,7 @@ import com.panasetskaia.dogsapp.base.BaseFragment
 import com.panasetskaia.dogsapp.databinding.FragmentAllDogsBinding
 import com.panasetskaia.dogsapp.presentation.MainViewModel
 import com.panasetskaia.dogsapp.presentation.Status
+import com.panasetskaia.utils.MY_LOG_TAG
 import com.panasetskaia.utils.getAppComponent
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -37,6 +39,7 @@ class AllDogsFragment : BaseFragment<FragmentAllDogsBinding, MainViewModel>() {
         binding.viewModel = viewModel
         breedAdapter.onItemClickListener = {
             viewModel.goToDetailsFragmentClicked(it.name)
+            Log.e(MY_LOG_TAG, "goToDetailsFragmentClicked with breed: ${it.name}")
         }
         collectFlow()
     }

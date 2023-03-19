@@ -25,8 +25,16 @@ interface ApiService {
         ) breedName: String
     ): DogApiByBreedResponse
 
-    @GET("breed/{breed_name}/{sub_breed_name}/images")
-    suspend fun getImagesBySubBreed(
+    @GET("breed/{breed_name}/images/random")
+    suspend fun getRandomPicByBreed(
+        @Path(
+            value = "breed_name",
+            encoded = true
+        ) breedName: String
+    ): DogApiRandomPicResponse
+
+    @GET("breed/{breed_name}/{sub_breed_name}/images/random")
+    suspend fun getRandomPicBySubBreed(
         @Path(
             value = "breed_name",
             encoded = true
@@ -35,6 +43,6 @@ interface ApiService {
             value = "sub_breed_name",
             encoded = true
         ) subBreedName: String,
-    ): DogApiByBreedResponse
+    ): DogApiRandomPicResponse
 
 }

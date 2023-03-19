@@ -2,11 +2,13 @@ package com.panasetskaia.dogsapp.presentation.screen_details
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.navigation.fragment.navArgs
 import com.panasetskaia.dogsapp.R
 import com.panasetskaia.dogsapp.base.BaseFragment
 import com.panasetskaia.dogsapp.databinding.FragmentDogDetailsBinding
 import com.panasetskaia.dogsapp.presentation.MainViewModel
+import com.panasetskaia.utils.MY_LOG_TAG
 import com.panasetskaia.utils.getAppComponent
 import javax.inject.Inject
 
@@ -16,6 +18,7 @@ class DogDetailsFragment : BaseFragment<FragmentDogDetailsBinding, MainViewModel
     @Inject
     override lateinit var viewModel: MainViewModel
 
+    private val navArgs by navArgs<DogDetailsFragmentArgs>()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -23,6 +26,12 @@ class DogDetailsFragment : BaseFragment<FragmentDogDetailsBinding, MainViewModel
     }
 
     override fun onReady(savedInstanceState: Bundle?) {
+        binding.viewModel = viewModel
+        Log.e(MY_LOG_TAG, "breed in DetailsFragment: ${navArgs.breedName}")
+
+        viewModel.changeCurrentBreed(navArgs.breedName)
+
+
         //todo
     }
 

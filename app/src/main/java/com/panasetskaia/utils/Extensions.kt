@@ -1,6 +1,8 @@
 package com.panasetskaia.utils
 
+import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ImageView
+import android.widget.Spinner
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LifecycleOwner
@@ -28,3 +30,8 @@ fun setImageUrl(imgView: ImageView, imgUrl: String?) {
         .placeholder(R.drawable.dog_breed_placeholder)
         .into(imgView)
 }
+
+
+
+
+const val MY_LOG_TAG = "my_tag"
