@@ -5,6 +5,7 @@
 
     <data>
         <import type="android.view.View" />
+        <import type="com.panasetskaia.dogsapp.presentation.base.Status"/>
         <variable
             name="mbreedsAdapter"
             type="com.panasetskaia.dogsapp.presentation.screen_all_dogs.BreedsAdapter" />
@@ -48,7 +49,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:visibility="@{viewModel.isLoading ? View.GONE : View.VISIBLE}">
+            android:visibility="@{(viewModel.allDogs.status==Status.SUCCESS) ? View.VISIBLE : View.GONE}">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_how_many_spans"
